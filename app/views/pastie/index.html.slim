@@ -1,0 +1,31 @@
+- if flash[:error]
+  .alert.alert-danger.alert-dismissible (role="alert")
+    button.close (type="button" data-dismiss="alert")
+      span (aria-hidden="true") &times;
+      span.sr-only Close
+    = flash[:error]
+
+- if flash[:notice]
+  .alert.alert-success.alert-dismissible (role="alert")
+    button.close (type="button" data-dismiss="alert")
+      span (aria-hidden="true") &times;
+      span.sr-only Close
+    = flash[:notice]
+
+form (method="post" action="/pastie")
+  =token_tag
+  .form-group
+    label Pastie Token:
+    p ="#{@token_key}"
+    input#current-token (type="hidden" name="token_key" value="#{@token_key}")
+  .form-group
+    label Content:
+    textarea#pastie-content.form-control (name="content" placeholder="Key in / paste your secret code here.")=@pastie.try(:content)
+  - if @pastie
+    .form-group
+      label Last Saved:
+      p ="#{time_ago_in_words(@pastie.updated_at, include_seconds: true)} ago"
+  .form-group
+    button.btn.btn-primary (type="submit") Save Pastie
+    | &nbsp;
+    button#clear-pastie.btn.btn-danger (type="button") Delete

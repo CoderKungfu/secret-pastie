@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Secret Pasteboard
+    =stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    =csrf_meta_tags
+body
+  .container
+    .header
+      form#pastie-query
+        ul.nav.nav-pills.pull-right
+          li.form-group
+            button#new-pastie.btn.btn-success (role="button") New Pastie
+          li.form-group
+            p &nbsp;
+          li.form-group
+            input#pastie-token.form-control (type="text" placeholder="Find pastie" length="10")
+          li.form-group
+            button.btn.btn-primary (type="submit") Go
+      h3 Secret Pastie
+
+    .jumbotron
+      ==yield
+
+    .footer
+      p Copyrights Reserved &copy; #{Date.current.strftime '%Y'}
+
+  =javascript_include_tag 'application', 'data-turbolinks-track' => true
+
