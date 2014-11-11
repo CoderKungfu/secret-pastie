@@ -13,11 +13,11 @@ body
       form#pastie-query
         ul.nav.nav-pills.pull-right
           li.form-group
-            button#new-pastie.btn.btn-success (role="button") New Pastie
+            button#new-pastie.btn.btn-success (type="button") New Pastie
           li.form-group
             p &nbsp;
           li.form-group
-            input#pastie-token.form-control (type="text" placeholder="Find pastie" length="10")
+            input#pastie-token.form-control (type="text" name="token_key" placeholder="Find pastie")
           li.form-group
             button.btn.btn-primary (type="submit") Go
       h3 Secret Pastie
